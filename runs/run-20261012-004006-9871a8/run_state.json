@@ -1,0 +1,276 @@
+{
+  "run_id": "run-20261012-004006-9871a8",
+  "offline": true,
+  "stages": {
+    "ingest": {
+      "idea_text": "AI agent that chases unpaid invoices for independent consultants",
+      "domain": "finance-ops",
+      "founder_stage": "stage0-improvise",
+      "has_free_users": false,
+      "has_first_sale": false
+    },
+    "plan": [
+      {
+        "name": "independent-accounting-practices",
+        "description": "Solo/small accounting and bookkeeping practices (2-10 staff) that invoice clients monthly",
+        "filters": [
+          {
+            "field": "industries",
+            "type": "in",
+            "value": [
+              "accounting",
+              "bookkeeping"
+            ]
+          }
+        ],
+        "why": "Invoicing and collections are core recurring pain for billable-hours firms"
+      },
+      {
+        "name": "fractional-cfo-firms",
+        "description": "Fractional CFO / virtual controller firms handling many small clients",
+        "filters": [
+          {
+            "field": "industries",
+            "type": "in",
+            "value": [
+              "financial services",
+              "management consulting"
+            ]
+          }
+        ],
+        "why": "Fractional operators own collections for many clients; leverage per saved hour is highest"
+      },
+      {
+        "name": "boutique-creative-agencies",
+        "description": "Boutique creative/marketing agencies with retainers and milestone invoicing",
+        "filters": [
+          {
+            "field": "industries",
+            "type": "in",
+            "value": [
+              "marketing and advertising",
+              "design"
+            ]
+          }
+        ],
+        "why": "Retainer billing disputes are common and visible in hiring signals (billing/invoice roles)"
+      }
+    ],
+    "discover": {
+      "segments": [
+        {
+          "name": "independent-accounting-practices",
+          "icp_filters": [
+            {
+              "field": "industries",
+              "type": "in",
+              "value": [
+                "accounting",
+                "bookkeeping"
+              ]
+            }
+          ],
+          "company_count": 1284,
+          "sample_companies": [
+            "Ledgerline CPA",
+            "Northgate Bookkeeping",
+            "Books & Bell LLP"
+          ],
+          "pain_signals": [
+            "job posting: 'Accounts Receivable Specialist - collections calls' at Northgate Bookkeeping",
+            "job posting: 'Billing Coordinator' at Ledgerline CPA",
+            "3 of 10 sampled firms list AR aging follow-up in job descriptions"
+          ],
+          "competitor_count": 41,
+          "priority_score": 0,
+          "rationale": "Invoicing and collections are core recurring pain for billable-hours firms",
+          "degraded": false
+        },
+        {
+          "name": "fractional-cfo-firms",
+          "icp_filters": [
+            {
+              "field": "industries",
+              "type": "in",
+              "value": [
+                "financial services",
+                "management consulting"
+              ]
+            }
+          ],
+          "company_count": 217,
+          "sample_companies": [
+            "Trellis CFO Group",
+            "Part-Time Controller Co"
+          ],
+          "pain_signals": [
+            "job posting: 'Client Accountant - month-end close and collections' at Trellis CFO Group"
+          ],
+          "competitor_count": 12,
+          "priority_score": 0,
+          "rationale": "Fractional operators own collections for many clients; leverage per saved hour is highest",
+          "degraded": false
+        },
+        {
+          "name": "boutique-creative-agencies",
+          "icp_filters": [
+            {
+              "field": "industries",
+              "type": "in",
+              "value": [
+                "marketing and advertising",
+                "design"
+              ]
+            }
+          ],
+          "company_count": 968,
+          "sample_companies": [
+            "Studio Meridian",
+            "Fold Creative",
+            "North & Yarrow"
+          ],
+          "pain_signals": [
+            "job posting: 'Studio Manager - invoicing and client billing' at Studio Meridian",
+            "job posting: 'Finance Manager (agency)' at Fold Creative"
+          ],
+          "competitor_count": 23,
+          "priority_score": 0,
+          "rationale": "Retainer billing disputes are common and visible in hiring signals (billing/invoice roles)",
+          "degraded": false
+        }
+      ],
+      "evidence": [
+        {
+          "id": "ev-company-independent-accounting-practices",
+          "source": "offline-fixture (demo mode, not live Crustdata data)",
+          "query": {
+            "filters": [
+              {
+                "field": "industries",
+                "type": "in",
+                "value": [
+                  "accounting",
+                  "bookkeeping"
+                ]
+              }
+            ]
+          },
+          "result_count": 1284,
+          "note": "segment size"
+        },
+        {
+          "id": "ev-company-fractional-cfo-firms",
+          "source": "offline-fixture (demo mode, not live Crustdata data)",
+          "query": {
+            "filters": [
+              {
+                "field": "industries",
+                "type": "in",
+                "value": [
+                  "financial services",
+                  "management consulting"
+                ]
+              }
+            ]
+          },
+          "result_count": 217,
+          "note": "segment size"
+        },
+        {
+          "id": "ev-company-boutique-creative-agencies",
+          "source": "offline-fixture (demo mode, not live Crustdata data)",
+          "query": {
+            "filters": [
+              {
+                "field": "industries",
+                "type": "in",
+                "value": [
+                  "marketing and advertising",
+                  "design"
+                ]
+              }
+            ]
+          },
+          "result_count": 968,
+          "note": "segment size"
+        }
+      ],
+      "recovered": false
+    },
+    "analyze": {
+      "problem_statement": "Independent Accounting Practices firms struggle to get paid on time because invoice chasing is manual, interrupt-driven work; the current workaround is hiring AR/collections staff or ignoring aging invoices, which costs cash flow and hours. Hypothesis: an agent that chases unpaid invoices removes that cost, starting with 'independent-accounting-practices'.",
+      "decision": "proceed",
+      "rationale": "Proceed: run 10 interviews in 'independent-accounting-practices' (score 99, ~1284 companies show the ICP, 41 competitors)."
+    },
+    "scriptkit": [
+      {
+        "segment": "independent-accounting-practices",
+        "questions": [
+          "Walk me through the last time you had to deal with ai agent chases unpaid invoices independent consultants. What happened?",
+          "How much time did that take you and your team last month?",
+          "What do you currently use to handle ai agent chases unpaid invoices independent consultants?",
+          "What did you last pay for to solve this, and what made you decide it was worth it?",
+          "Who else on your team touches this problem?",
+          "When was the last time this cost you money directly?",
+          "What have you already tried that did not work?",
+          "How do you know when this problem has gotten worse?",
+          "If this were solved overnight, what would you do with the saved time?",
+          "What would have to be true for you to pay for a fix this month?"
+        ]
+      },
+      {
+        "segment": "fractional-cfo-firms",
+        "questions": [
+          "Walk me through the last time you had to deal with ai agent chases unpaid invoices independent consultants. What happened?",
+          "How much time did that take you and your team last month?",
+          "What do you currently use to handle ai agent chases unpaid invoices independent consultants?",
+          "What did you last pay for to solve this, and what made you decide it was worth it?",
+          "Who else on your team touches this problem?",
+          "When was the last time this cost you money directly?",
+          "What have you already tried that did not work?",
+          "How do you know when this problem has gotten worse?",
+          "If this were solved overnight, what would you do with the saved time?",
+          "What would have to be true for you to pay for a fix this month?"
+        ]
+      },
+      {
+        "segment": "boutique-creative-agencies",
+        "questions": [
+          "Walk me through the last time you had to deal with ai agent chases unpaid invoices independent consultants. What happened?",
+          "How much time did that take you and your team last month?",
+          "What do you currently use to handle ai agent chases unpaid invoices independent consultants?",
+          "What did you last pay for to solve this, and what made you decide it was worth it?",
+          "Who else on your team touches this problem?",
+          "When was the last time this cost you money directly?",
+          "What have you already tried that did not work?",
+          "How do you know when this problem has gotten worse?",
+          "If this were solved overnight, what would you do with the saved time?",
+          "What would have to be true for you to pay for a fix this month?"
+        ]
+      }
+    ]
+  },
+  "stage_ms": {
+    "ingest": 0,
+    "plan": 0,
+    "discover": 0,
+    "analyze": 0,
+    "scriptkit": 0
+  },
+  "failures": [
+    {
+      "stage": "discover",
+      "error": "injected failure in 'discover' (chaos switch on)",
+      "injected": true
+    }
+  ],
+  "recovered_from_failure": true,
+  "resumed": false,
+  "llm": {
+    "calls": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "cost_usd": 0.0
+  },
+  "decision": "proceed"
+}

@@ -1,0 +1,219 @@
+{
+  "run_id": "run-20261012-003954-207445",
+  "idea": {
+    "idea_text": "AI agent that chases unpaid invoices for independent consultants",
+    "domain": "finance-ops",
+    "founder_stage": "stage0-improvise",
+    "has_free_users": false,
+    "has_first_sale": false
+  },
+  "stage_diagnosis": "Stage 0 (Improvise) on the ACQ $100M Scaling Roadmap: nothing is happening yet; the goal is to get people to try your stuff for free. Graduation = people find it helpful unprompted.",
+  "problem_statement": "Independent Accounting Practices firms struggle to get paid on time because invoice chasing is manual, interrupt-driven work; the current workaround is hiring AR/collections staff or ignoring aging invoices, which costs cash flow and hours. Hypothesis: an agent that chases unpaid invoices removes that cost, starting with 'independent-accounting-practices'.",
+  "segments": [
+    {
+      "name": "independent-accounting-practices",
+      "icp_filters": [
+        {
+          "field": "industries",
+          "type": "in",
+          "value": [
+            "accounting",
+            "bookkeeping"
+          ]
+        }
+      ],
+      "company_count": 1284,
+      "sample_companies": [
+        "Ledgerline CPA",
+        "Northgate Bookkeeping",
+        "Books & Bell LLP"
+      ],
+      "pain_signals": [
+        "job posting: 'Accounts Receivable Specialist - collections calls' at Northgate Bookkeeping",
+        "job posting: 'Billing Coordinator' at Ledgerline CPA",
+        "3 of 10 sampled firms list AR aging follow-up in job descriptions"
+      ],
+      "competitor_count": 41,
+      "priority_score": 99,
+      "rationale": "Invoicing and collections are core recurring pain for billable-hours firms",
+      "degraded": false
+    },
+    {
+      "name": "fractional-cfo-firms",
+      "icp_filters": [
+        {
+          "field": "industries",
+          "type": "in",
+          "value": [
+            "financial services",
+            "management consulting"
+          ]
+        }
+      ],
+      "company_count": 217,
+      "sample_companies": [
+        "Trellis CFO Group",
+        "Part-Time Controller Co"
+      ],
+      "pain_signals": [
+        "job posting: 'Client Accountant - month-end close and collections' at Trellis CFO Group"
+      ],
+      "competitor_count": 12,
+      "priority_score": 44,
+      "rationale": "Fractional operators own collections for many clients; leverage per saved hour is highest",
+      "degraded": false
+    },
+    {
+      "name": "boutique-creative-agencies",
+      "icp_filters": [
+        {
+          "field": "industries",
+          "type": "in",
+          "value": [
+            "marketing and advertising",
+            "design"
+          ]
+        }
+      ],
+      "company_count": 968,
+      "sample_companies": [
+        "Studio Meridian",
+        "Fold Creative",
+        "North & Yarrow"
+      ],
+      "pain_signals": [
+        "job posting: 'Studio Manager - invoicing and client billing' at Studio Meridian",
+        "job posting: 'Finance Manager (agency)' at Fold Creative"
+      ],
+      "competitor_count": 23,
+      "priority_score": 77,
+      "rationale": "Retainer billing disputes are common and visible in hiring signals (billing/invoice roles)",
+      "degraded": false
+    }
+  ],
+  "scripts": [
+    {
+      "segment": "independent-accounting-practices",
+      "questions": [
+        "Walk me through the last time you had to deal with ai agent chases unpaid invoices independent consultants. What happened?",
+        "How much time did that take you and your team last month?",
+        "What do you currently use to handle ai agent chases unpaid invoices independent consultants?",
+        "What did you last pay for to solve this, and what made you decide it was worth it?",
+        "Who else on your team touches this problem?",
+        "When was the last time this cost you money directly?",
+        "What have you already tried that did not work?",
+        "How do you know when this problem has gotten worse?",
+        "If this were solved overnight, what would you do with the saved time?",
+        "What would have to be true for you to pay for a fix this month?"
+      ]
+    },
+    {
+      "segment": "fractional-cfo-firms",
+      "questions": [
+        "Walk me through the last time you had to deal with ai agent chases unpaid invoices independent consultants. What happened?",
+        "How much time did that take you and your team last month?",
+        "What do you currently use to handle ai agent chases unpaid invoices independent consultants?",
+        "What did you last pay for to solve this, and what made you decide it was worth it?",
+        "Who else on your team touches this problem?",
+        "When was the last time this cost you money directly?",
+        "What have you already tried that did not work?",
+        "How do you know when this problem has gotten worse?",
+        "If this were solved overnight, what would you do with the saved time?",
+        "What would have to be true for you to pay for a fix this month?"
+      ]
+    },
+    {
+      "segment": "boutique-creative-agencies",
+      "questions": [
+        "Walk me through the last time you had to deal with ai agent chases unpaid invoices independent consultants. What happened?",
+        "How much time did that take you and your team last month?",
+        "What do you currently use to handle ai agent chases unpaid invoices independent consultants?",
+        "What did you last pay for to solve this, and what made you decide it was worth it?",
+        "Who else on your team touches this problem?",
+        "When was the last time this cost you money directly?",
+        "What have you already tried that did not work?",
+        "How do you know when this problem has gotten worse?",
+        "If this were solved overnight, what would you do with the saved time?",
+        "What would have to be true for you to pay for a fix this month?"
+      ]
+    }
+  ],
+  "experiment_plan": [
+    "Recruit 10 founders from the top segment for free 20-minute interviews this week (warm channel first: past email contacts, LinkedIn 1st-degree).",
+    "Run the Mom Test script; capture past behaviour, never opinions.",
+    "Give the top 3 most-pained interviewees the workflow done-for-them by hand (concierge), free, once.",
+    "Log every interview against the kill criteria below."
+  ],
+  "graduation_gates": [
+    "At least 8 of 10 interviews confirm the pain is recurring and already costs measurable time/money",
+    "At least 5 interviewees accept a second, free concierge run unprompted",
+    "At least 3 interviewees describe the current, specific workaround in detail"
+  ],
+  "kill_criteria": [
+    "Fewer than 4 of 10 interviewees recognise the pain unprompted",
+    "Interviewees already solved it well enough that a paid tool feels unnecessary",
+    "The segment keeps describing it as a nice-to-have, not a recurring cost"
+  ],
+  "decision": "proceed",
+  "guardrail_notes": [
+    "guardrail PASS"
+  ],
+  "evidence": [
+    {
+      "id": "ev-company-independent-accounting-practices",
+      "source": "offline-fixture (demo mode, not live Crustdata data)",
+      "query": {
+        "filters": [
+          {
+            "field": "industries",
+            "type": "in",
+            "value": [
+              "accounting",
+              "bookkeeping"
+            ]
+          }
+        ]
+      },
+      "result_count": 1284,
+      "note": "segment size"
+    },
+    {
+      "id": "ev-company-fractional-cfo-firms",
+      "source": "offline-fixture (demo mode, not live Crustdata data)",
+      "query": {
+        "filters": [
+          {
+            "field": "industries",
+            "type": "in",
+            "value": [
+              "financial services",
+              "management consulting"
+            ]
+          }
+        ]
+      },
+      "result_count": 217,
+      "note": "segment size"
+    },
+    {
+      "id": "ev-company-boutique-creative-agencies",
+      "source": "offline-fixture (demo mode, not live Crustdata data)",
+      "query": {
+        "filters": [
+          {
+            "field": "industries",
+            "type": "in",
+            "value": [
+              "marketing and advertising",
+              "design"
+            ]
+          }
+        ]
+      },
+      "result_count": 968,
+      "note": "segment size"
+    }
+  ],
+  "recovered_from_failure": false,
+  "cost_usd": 0.0
+}
