@@ -71,10 +71,10 @@ python -m stagezero run --idea "..." --demo --fail-at discover
 | Criterion | Where to look |
 |---|---|
 | Agent works start→finish | `runs/*/VALIDATION_KIT.md`, `python -m stagezero run --demo` |
-| neatlogs | every stage/tool/guardrail event; trace links from a keyed run; recovery run `runs/*` with `recovered_from_failure: true` |
-| Entire | repo built under Entire checkpoints; `entire graph snapshot --format ndjson` output + `.entire/graph-agent.md` committed |
-| cfo.ai | [`business/BUSINESS_PLAN.md`](business/BUSINESS_PLAN.md) (pricing, costs, revenue, runway, generated from real run costs) |
-| Improved agent | before/after pair: run with a bug, investigate in neatlogs traces, fix, rerun (see `git log`) |
+| neatlogs | every stage/tool/guardrail event; trace links from the two live runs (`run-20261012-080239`, `run-20261012-080405`); before/after pair (credit-contract fix: zeros → real counts); recovery run in `runs/` with `recovered_from_failure: true` |
+| Entire | CLI 0.11.4 + graph plugin 0.4.0 active in this repo; `entire graph snapshot` committed as `runs/entire-graph.ndjson`; `.entire/graph-agent.md` + AGENTS.md managed blocks. Checkpoint link: make one small commit from Claude Code or Codex in this repo (Entire hooks are installed) and add `https://entire.io/gh/eugene-tulu/founder-co-pilot/commit/<SHA>` |
+| cfo.ai | [`business/BUSINESS_PLAN.md`](business/BUSINESS_PLAN.md) — pricing, unit costs (measured from runs), revenue/gross-margin scenarios, runway on hackathon credits; push to a cfo.ai Model over MCP (`https://api.cfo.ai/mcp`) |
+| Improved agent | run `run-20261012-080405` (LLM hypotheses, zeros) vs `run-20261012-080547`+ (contract fix) — the traces in the dashboard show the difference |
 | Built in public | build-log posts tagged #neatHack |
 
 ## Layout
