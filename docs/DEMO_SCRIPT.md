@@ -1,4 +1,27 @@
-# Demo video script (target: 2:40–2:55)
+# Demo video
+
+The base video is **generated, not hand-recorded**: `scripts/make_video.py` captures live
+command output, renders terminal-style slides, synthesizes narration with `espeak`, and
+assembles everything with ffmpeg. Regenerate any time:
+
+```bash
+python scripts/make_video.py   # -> demo/stagezero-demo.mp4 (currently 2:19, limit 3:00)
+```
+
+## Two inserts to record (~15–20s each)
+
+The generated video marks them as `[RECORD INSERT]` on slides 6 and 10:
+
+1. **neatlogs Traces dashboard** — open trace `3100c861c0a05f664657984d35ed342f`, show the
+   span tree and the `stage_end` / `tool_call` / `provenance_guardrail` events; then the
+   before/after pair (`fe7451c8…` zeros → `3100c861…` real counts).
+2. **cfo.ai Model** — the live Model with the pricing / costs / revenue / runway tables.
+
+Splice them in at those marks (any editor), or hand-record the full video following the
+storyboard below. The script below is the narrative the generated narration follows.
+
+---
+
 
 One rule: show, don't tell. Every claim gets an artifact on screen. The video must
 cover, for each of neatlogs, Entire and cfo.ai: architecture, implementation,

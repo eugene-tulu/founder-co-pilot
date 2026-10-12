@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20261012-114615-c42fb3",
+  "decision": "proceed",
+  "top_segment": "independent-accounting-practices",
+  "segments": 3,
+  "recovered_from_failure": false,
+  "cost_usd": 0.021153,
+  "stage_ms": {
+    "ingest": 2541,
+    "plan": 0,
+    "discover": 0,
+    "analyze": 3412,
+    "scriptkit": 15834
+  }
+}

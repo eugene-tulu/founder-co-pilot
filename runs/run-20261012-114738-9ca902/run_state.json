@@ -1,0 +1,297 @@
+{
+  "run_id": "run-20261012-114738-9ca902",
+  "offline": true,
+  "stages": {
+    "ingest": {
+      "idea_text": "AI agent that chases unpaid invoices",
+      "domain": "finance-ops",
+      "founder_stage": "stage0-improvise",
+      "has_free_users": false,
+      "has_first_sale": false
+    },
+    "plan": [
+      {
+        "name": "independent-accounting-practices",
+        "description": "Solo/small accounting and bookkeeping practices (2-10 staff) that invoice clients monthly",
+        "filters": [
+          {
+            "field": "basic_info.industries",
+            "type": "in",
+            "value": [
+              "Accounting",
+              "Bookkeeping"
+            ]
+          },
+          {
+            "field": "basic_info.employee_count_range",
+            "type": "in",
+            "value": [
+              "2-10"
+            ]
+          }
+        ],
+        "why": "Invoicing and collections are core recurring pain for billable-hours firms"
+      },
+      {
+        "name": "fractional-cfo-firms",
+        "description": "Fractional CFO / virtual controller firms handling many small clients",
+        "filters": [
+          {
+            "field": "basic_info.industries",
+            "type": "in",
+            "value": [
+              "Financial Services",
+              "Management Consulting"
+            ]
+          }
+        ],
+        "why": "Fractional operators own collections for many clients; leverage per saved hour is highest"
+      },
+      {
+        "name": "boutique-creative-agencies",
+        "description": "Boutique creative/marketing agencies with retainers and milestone invoicing",
+        "filters": [
+          {
+            "field": "basic_info.industries",
+            "type": "in",
+            "value": [
+              "Marketing and Advertising",
+              "Design"
+            ]
+          }
+        ],
+        "why": "Retainer billing disputes are common and visible in hiring signals (billing/invoice roles)"
+      }
+    ],
+    "discover": {
+      "segments": [
+        {
+          "name": "independent-accounting-practices",
+          "icp_filters": [
+            {
+              "field": "basic_info.industries",
+              "type": "in",
+              "value": [
+                "Accounting",
+                "Bookkeeping"
+              ]
+            },
+            {
+              "field": "basic_info.employee_count_range",
+              "type": "in",
+              "value": [
+                "2-10"
+              ]
+            }
+          ],
+          "company_count": 1284,
+          "sample_companies": [
+            "Ledgerline CPA",
+            "Northgate Bookkeeping",
+            "Books & Bell LLP"
+          ],
+          "pain_signals": [
+            "job posting: 'Accounts Receivable Specialist - collections calls' at Northgate Bookkeeping",
+            "job posting: 'Billing Coordinator' at Ledgerline CPA",
+            "3 of 10 sampled firms list AR aging follow-up in job descriptions"
+          ],
+          "competitor_count": 41,
+          "priority_score": 0,
+          "rationale": "Invoicing and collections are core recurring pain for billable-hours firms",
+          "degraded": false
+        },
+        {
+          "name": "fractional-cfo-firms",
+          "icp_filters": [
+            {
+              "field": "basic_info.industries",
+              "type": "in",
+              "value": [
+                "Financial Services",
+                "Management Consulting"
+              ]
+            }
+          ],
+          "company_count": 217,
+          "sample_companies": [
+            "Trellis CFO Group",
+            "Part-Time Controller Co"
+          ],
+          "pain_signals": [
+            "job posting: 'Client Accountant - month-end close and collections' at Trellis CFO Group"
+          ],
+          "competitor_count": 12,
+          "priority_score": 0,
+          "rationale": "Fractional operators own collections for many clients; leverage per saved hour is highest",
+          "degraded": false
+        },
+        {
+          "name": "boutique-creative-agencies",
+          "icp_filters": [
+            {
+              "field": "basic_info.industries",
+              "type": "in",
+              "value": [
+                "Marketing and Advertising",
+                "Design"
+              ]
+            }
+          ],
+          "company_count": 968,
+          "sample_companies": [
+            "Studio Meridian",
+            "Fold Creative",
+            "North & Yarrow"
+          ],
+          "pain_signals": [
+            "job posting: 'Studio Manager - invoicing and client billing' at Studio Meridian",
+            "job posting: 'Finance Manager (agency)' at Fold Creative"
+          ],
+          "competitor_count": 23,
+          "priority_score": 0,
+          "rationale": "Retainer billing disputes are common and visible in hiring signals (billing/invoice roles)",
+          "degraded": false
+        }
+      ],
+      "evidence": [
+        {
+          "id": "ev-company-independent-accounting-practices",
+          "source": "offline-fixture (demo mode, not live Crustdata data)",
+          "query": {
+            "filters": [
+              {
+                "field": "basic_info.industries",
+                "type": "in",
+                "value": [
+                  "Accounting",
+                  "Bookkeeping"
+                ]
+              },
+              {
+                "field": "basic_info.employee_count_range",
+                "type": "in",
+                "value": [
+                  "2-10"
+                ]
+              }
+            ]
+          },
+          "result_count": 1284,
+          "note": "segment size"
+        },
+        {
+          "id": "ev-company-fractional-cfo-firms",
+          "source": "offline-fixture (demo mode, not live Crustdata data)",
+          "query": {
+            "filters": [
+              {
+                "field": "basic_info.industries",
+                "type": "in",
+                "value": [
+                  "Financial Services",
+                  "Management Consulting"
+                ]
+              }
+            ]
+          },
+          "result_count": 217,
+          "note": "segment size"
+        },
+        {
+          "id": "ev-company-boutique-creative-agencies",
+          "source": "offline-fixture (demo mode, not live Crustdata data)",
+          "query": {
+            "filters": [
+              {
+                "field": "basic_info.industries",
+                "type": "in",
+                "value": [
+                  "Marketing and Advertising",
+                  "Design"
+                ]
+              }
+            ]
+          },
+          "result_count": 968,
+          "note": "segment size"
+        }
+      ],
+      "recovered": false
+    },
+    "analyze": {
+      "problem_statement": "Independent accounting practices struggle to collect on unpaid invoices because chasing overdue accounts requires persistent, time-consuming outreach that pulls skilled staff away from billable work; the current workaround is hiring dedicated AR or billing coordinators to make collections calls and manage aging reports, which costs salary overhead for a non-revenue-generating role and reduces the capacity of qualified accountants to serve clients. Hypothesis: an AI agent that autonomously monitors invoice aging, sends escalating follow-up communications, and logs responses removes that staffing cost and time drain for independent accounting practices.",
+      "decision": "proceed",
+      "rationale": "Proceed: run 10 interviews in 'independent-accounting-practices' (score 99, ~1284 companies show the ICP, 41 competitors)."
+    },
+    "scriptkit": [
+      {
+        "segment": "independent-accounting-practices",
+        "questions": [
+          "Walk me through the last time you had an invoice go more than 30 days past due \u2014 what exactly did you do to follow up on it?",
+          "How much time did you or your staff spend last month on chasing overdue payments, and who specifically was doing that work?",
+          "Tell me about the most frustrating collections situation you dealt with in the past year \u2014 how did it play out from start to finish?",
+          "What tools or systems did you actually use the last time you sent a payment reminder \u2014 email, phone, your accounting software, something else?",
+          "Have you ever hired or considered hiring someone specifically to handle collections calls \u2014 what happened when you explored that?",
+          "What was the total dollar value of invoices you wrote off as uncollectable in the last 12 months, and how did you decide when to give up?",
+          "Describe the last time a client relationship got awkward or damaged because of a collections conversation \u2014 how did you handle it?",
+          "When a client went silent on an overdue invoice, what was the sequence of steps you actually took before escalating or giving up?",
+          "How did you track which overdue invoices had been followed up on and which hadn't \u2014 show me what that process looked like in practice?",
+          "Tell me about a time you lost a client or nearly lost one during the collections process \u2014 what did that cost you beyond the unpaid invoice itself?"
+        ]
+      },
+      {
+        "segment": "fractional-cfo-firms",
+        "questions": [
+          "Walk me through the last time you had to chase a client's unpaid invoice \u2014 what did that process actually look like from start to finish?",
+          "In the past 90 days, how many hours did your team spend on collections-related follow-up across your client portfolio?",
+          "Tell me about the last invoice that went past 60 days overdue \u2014 what steps did you take, and who owned each step?",
+          "What tools or systems did you use the last time you sent a collections follow-up \u2014 email, phone, accounting software, something else?",
+          "Have you ever lost a client relationship because of how collections were handled \u2014 what happened?",
+          "When you last hired or considered hiring someone, how much of that role was expected to cover collections and AR follow-up specifically?",
+          "Describe the most awkward or difficult collections situation you personally dealt with in the last year \u2014 how did you resolve it?",
+          "How did you track which invoices needed follow-up last month \u2014 what did that workflow look like day to day?",
+          "Have you ever had a client engagement where AR aging got bad enough that it affected your own firm's deliverables or relationship \u2014 what did you do?",
+          "What did you try before settling on your current collections process \u2014 what made you abandon those earlier approaches?"
+        ]
+      },
+      {
+        "segment": "boutique-creative-agencies",
+        "questions": [
+          "Walk me through the last time a client paid you late \u2014 what actually happened from the moment the invoice was due to when you finally got the money?",
+          "How did you handle chasing that overdue payment \u2014 who did it, what did they do, and how long did it take out of their week?",
+          "What tools or systems did you use the last time you sent a follow-up on an unpaid invoice \u2014 email, phone, accounting software, something else?",
+          "Tell me about the most awkward or difficult collections situation you've had with a client in the past year \u2014 how did you navigate it?",
+          "When you last hired or considered hiring someone for a studio manager or finance role, how much of the job description was specifically about chasing payments and managing billing?",
+          "How much time did your team collectively spend last month on invoice follow-ups \u2014 can you walk me through where those hours actually went?",
+          "Have you ever lost a client or damaged a relationship because of how a payment chase was handled \u2014 what happened?",
+          "What did you do the last time a client disputed or ignored an invoice entirely \u2014 who got involved and what was the resolution process?",
+          "Have you ever written off an invoice as uncollectable rather than continuing to chase it \u2014 what was the amount and what made you give up?",
+          "When you last reviewed your accounts receivable, what was the oldest unpaid invoice sitting there, and what steps had already been taken to collect it?"
+        ]
+      }
+    ]
+  },
+  "stage_ms": {
+    "ingest": 2312,
+    "plan": 0,
+    "discover": 0,
+    "analyze": 2711,
+    "scriptkit": 15584
+  },
+  "failures": [
+    {
+      "stage": "discover",
+      "error": "injected failure in 'discover' (chaos switch on)",
+      "injected": true
+    }
+  ],
+  "recovered_from_failure": true,
+  "resumed": false,
+  "llm": {
+    "calls": 5,
+    "prompt_tokens": 656,
+    "completion_tokens": 1188,
+    "cost_usd": 0.019788
+  },
+  "decision": "proceed"
+}
