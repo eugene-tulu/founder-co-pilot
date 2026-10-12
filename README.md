@@ -92,11 +92,43 @@ scripts/make_business_plan.py   generates business/BUSINESS_PLAN.md from run cos
 tests/          offline end-to-end, guardrail, recovery, resume tests
 ```
 
+## Live mode (real keys)
+
+Live mode uses LiteLLM (any OpenAI-compatible endpoint) and Crustdata. Two runs
+with **real live data** are captured in the repo as evidence:
+`runs/run-20261012-080239-b7eb87` and `runs/run-20261012-080405-09d5b8`
+(fixture-hypothesis and LLM-hypothesis variants, ~5.2M / 2.7M / 2.3M companies
+in the top segments, with neatlogs traces in the dashboard for both).
+
+- Crustdata queries are cached in `runs/crustdata_cache.json` (keyed by exact
+  request payload, `_cached_from` provenance). Reruns of the same queries are
+  free — deliberate, because search calls burn credits.
+- When credits run out, the API returns `insufficient_credits`; the agent logs
+  the failure, retries degraded, and records it in `run_state.json` instead of
+  silently reporting zero. Rebuild any past run with `--resume <RUN_ID>` —
+  completed stages replay from state, so the kit is reproduced with zero calls.
+- Real Crustdata contract learned from API errors during the hackathon:
+  filters are a single condition or `{"op": "and", "conditions": [...]}`; valid
+  columns include `basic_info.industries`, `basic_info.employee_count_range`,
+  `basic_info.name`, `job_title`; operators are `= != < =< > => in not_in (.)
+  has_all` where `(.)` is an all-words match. The plan prompt constrains the
+  LLM to these columns and requires a headcount band per segment.
+
+## Reproduce the live kit (no API spend)
+
+```bash
+python -m stagezero run --idea "AI agent that chases unpaid invoices for independent consultants" \
+    --resume run-20261012-080405-09d5b8   # rebuilds the captured live run from state
+```
+
+
 ## Honest limits
 
 - Crustdata filter field names are discovered via autocomplete where possible; exact
   schema varies by plan (live endpoints are enterprise-tier). Degraded mode exists so a
-  missing/limited key never breaks the run.
+  missing/limited key never breaks the run. Hackathon Crustdata credits were exhausted
+  during development debugging; the cache and `--resume` exist so the demo never depends
+  on a live balance.
 - Segment scoring is deliberately transparent (pain 45% / size 30% / low saturation 25%)
   so a founder can argue with it.
 - Demo-mode numbers are fixtures, not market truth.
