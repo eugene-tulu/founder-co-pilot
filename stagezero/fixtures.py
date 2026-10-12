@@ -13,19 +13,22 @@ DEMO_HYPOTHESES = [
     {
         "name": "independent-accounting-practices",
         "description": "Solo/small accounting and bookkeeping practices (2-10 staff) that invoice clients monthly",
-        "filters": [{"field": "industries", "type": "in", "value": ["accounting", "bookkeeping"]}],
+        "filters": [
+            {"field": "basic_info.industries", "type": "in", "value": ["Accounting", "Bookkeeping"]},
+            {"field": "basic_info.employee_count_range", "type": "in", "value": ["2-10"]},
+        ],
         "why": "Invoicing and collections are core recurring pain for billable-hours firms",
     },
     {
         "name": "fractional-cfo-firms",
         "description": "Fractional CFO / virtual controller firms handling many small clients",
-        "filters": [{"field": "industries", "type": "in", "value": ["financial services", "management consulting"]}],
+        "filters": [{"field": "basic_info.industries", "type": "in", "value": ["Financial Services", "Management Consulting"]}],
         "why": "Fractional operators own collections for many clients; leverage per saved hour is highest",
     },
     {
         "name": "boutique-creative-agencies",
         "description": "Boutique creative/marketing agencies with retainers and milestone invoicing",
-        "filters": [{"field": "industries", "type": "in", "value": ["marketing and advertising", "design"]}],
+        "filters": [{"field": "basic_info.industries", "type": "in", "value": ["Marketing and Advertising", "Design"]}],
         "why": "Retainer billing disputes are common and visible in hiring signals (billing/invoice roles)",
     },
 ]

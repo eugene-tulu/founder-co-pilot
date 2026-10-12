@@ -114,6 +114,9 @@ class Pipeline:
             )
             segments = [Segment(**s) for s in disc["segments"]]
             evidence = [Evidence(**e) for e in disc["evidence"]]
+            # Scores are derived from evidence, so recompute them: a resumed run must
+            # produce the same scores as the original run.
+            analyze.score_segments(segments)
             if disc.get("recovered"):
                 self.state["recovered_from_failure"] = True
 

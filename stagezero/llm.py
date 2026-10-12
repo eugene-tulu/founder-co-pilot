@@ -53,3 +53,20 @@ async def maybe_llm(llm: LLM, system: str, user: str, fallback: str, json_mode: 
         return await llm.chat(system, user, json_mode=json_mode)
     except Exception:
         return fallback
+
+
+def parse_json_loose(raw: str) -> dict:
+    """Extract a JSON object from LLM output, tolerating ```json fences and prose."""
+    import json
+    import re
+
+    text = raw.strip()
+    fence = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.DOTALL)
+    if fence:
+        text = fence.group(1)
+    else:
+        start = text.find("{")
+        end = text.rfind("}")
+        if start != -1 and end != -1 and end > start:
+            text = text[start : end + 1]
+    return json.loads(text)

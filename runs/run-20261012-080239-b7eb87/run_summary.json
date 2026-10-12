@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20261012-080239-b7eb87",
+  "decision": "proceed",
+  "top_segment": "fractional-cfo-firms",
+  "segments": 3,
+  "recovered_from_failure": false,
+  "cost_usd": 0.03114,
+  "stage_ms": {
+    "ingest": 1962,
+    "plan": 6948,
+    "discover": 24328,
+    "analyze": 3122,
+    "scriptkit": 14638
+  }
+}

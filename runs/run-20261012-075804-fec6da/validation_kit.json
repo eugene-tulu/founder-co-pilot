@@ -1,0 +1,208 @@
+{
+  "run_id": "run-20261012-075804-fec6da",
+  "idea": {
+    "idea_text": "AI agent that chases unpaid invoices for independent consultants",
+    "domain": "finance-ops",
+    "founder_stage": "stage0-improvise",
+    "has_free_users": false,
+    "has_first_sale": false
+  },
+  "stage_diagnosis": "Stage 0 (Improvise) on the ACQ $100M Scaling Roadmap: nothing is happening yet; the goal is to get people to try your stuff for free. Graduation = people find it helpful unprompted.",
+  "problem_statement": "Independent accounting practices struggle to recover payment on overdue client invoices because following up manually is time-consuming and professionally awkward; the current workaround is sending reminder emails and making phone calls themselves, which costs billable hours diverted away from client work and risks damaging client relationships. Hypothesis: an AI agent that autonomously sends escalating, professionally toned payment chasers on behalf of the practice removes that time and relationship cost for independent accounting practices.",
+  "segments": [
+    {
+      "name": "independent-accounting-practices",
+      "icp_filters": [
+        {
+          "field": "industries",
+          "type": "in",
+          "value": [
+            "accounting",
+            "bookkeeping"
+          ]
+        }
+      ],
+      "company_count": 0,
+      "sample_companies": [],
+      "pain_signals": [
+        "no job-title signal for 'invoice' in this segment"
+      ],
+      "competitor_count": 0,
+      "priority_score": 40,
+      "rationale": "Invoicing and collections are core recurring pain for billable-hours firms",
+      "degraded": true
+    },
+    {
+      "name": "fractional-cfo-firms",
+      "icp_filters": [
+        {
+          "field": "industries",
+          "type": "in",
+          "value": [
+            "financial services",
+            "management consulting"
+          ]
+        }
+      ],
+      "company_count": 0,
+      "sample_companies": [],
+      "pain_signals": [
+        "no job-title signal for 'invoice' in this segment"
+      ],
+      "competitor_count": 0,
+      "priority_score": 40,
+      "rationale": "Fractional operators own collections for many clients; leverage per saved hour is highest",
+      "degraded": true
+    },
+    {
+      "name": "boutique-creative-agencies",
+      "icp_filters": [
+        {
+          "field": "industries",
+          "type": "in",
+          "value": [
+            "marketing and advertising",
+            "design"
+          ]
+        }
+      ],
+      "company_count": 0,
+      "sample_companies": [],
+      "pain_signals": [
+        "no job-title signal for 'invoice' in this segment"
+      ],
+      "competitor_count": 0,
+      "priority_score": 40,
+      "rationale": "Retainer billing disputes are common and visible in hiring signals (billing/invoice roles)",
+      "degraded": true
+    }
+  ],
+  "scripts": [
+    {
+      "segment": "independent-accounting-practices",
+      "questions": [
+        "Walk me through the last time you had to deal with ai agent chases unpaid invoices independent consultants. What happened?",
+        "How much time did that take you and your team last month?",
+        "What do you currently use to handle ai agent chases unpaid invoices independent consultants?",
+        "What did you last pay for to solve this, and what made you decide it was worth it?",
+        "Who else on your team touches this problem?",
+        "When was the last time this cost you money directly?",
+        "What have you already tried that did not work?",
+        "How do you know when this problem has gotten worse?",
+        "If this were solved overnight, what would you do with the saved time?",
+        "What would have to be true for you to pay for a fix this month?"
+      ]
+    },
+    {
+      "segment": "fractional-cfo-firms",
+      "questions": [
+        "Walk me through the last time you had to deal with ai agent chases unpaid invoices independent consultants. What happened?",
+        "How much time did that take you and your team last month?",
+        "What do you currently use to handle ai agent chases unpaid invoices independent consultants?",
+        "What did you last pay for to solve this, and what made you decide it was worth it?",
+        "Who else on your team touches this problem?",
+        "When was the last time this cost you money directly?",
+        "What have you already tried that did not work?",
+        "How do you know when this problem has gotten worse?",
+        "If this were solved overnight, what would you do with the saved time?",
+        "What would have to be true for you to pay for a fix this month?"
+      ]
+    },
+    {
+      "segment": "boutique-creative-agencies",
+      "questions": [
+        "Walk me through the last time you had to deal with ai agent chases unpaid invoices independent consultants. What happened?",
+        "How much time did that take you and your team last month?",
+        "What do you currently use to handle ai agent chases unpaid invoices independent consultants?",
+        "What did you last pay for to solve this, and what made you decide it was worth it?",
+        "Who else on your team touches this problem?",
+        "When was the last time this cost you money directly?",
+        "What have you already tried that did not work?",
+        "How do you know when this problem has gotten worse?",
+        "If this were solved overnight, what would you do with the saved time?",
+        "What would have to be true for you to pay for a fix this month?"
+      ]
+    }
+  ],
+  "experiment_plan": [
+    "Recruit 10 founders from the top segment for free 20-minute interviews this week (warm channel first: past email contacts, LinkedIn 1st-degree).",
+    "Run the Mom Test script; capture past behaviour, never opinions.",
+    "Give the top 3 most-pained interviewees the workflow done-for-them by hand (concierge), free, once.",
+    "Log every interview against the kill criteria below."
+  ],
+  "graduation_gates": [
+    "At least 8 of 10 interviews confirm the pain is recurring and already costs measurable time/money",
+    "At least 5 interviewees accept a second, free concierge run unprompted",
+    "At least 3 interviewees describe the current, specific workaround in detail"
+  ],
+  "kill_criteria": [
+    "Fewer than 4 of 10 interviewees recognise the pain unprompted",
+    "Interviewees already solved it well enough that a paid tool feels unnecessary",
+    "The segment keeps describing it as a nice-to-have, not a recurring cost"
+  ],
+  "decision": "pivot",
+  "guardrail_notes": [
+    "guardrail PASS"
+  ],
+  "evidence": [
+    {
+      "id": "ev-company-independent-accounting-practices",
+      "source": "crustdata /company/search",
+      "query": {
+        "filters": [
+          {
+            "field": "industries",
+            "type": "in",
+            "value": [
+              "accounting",
+              "bookkeeping"
+            ]
+          }
+        ],
+        "limit": 25
+      },
+      "result_count": 0,
+      "note": "degraded retry"
+    },
+    {
+      "id": "ev-company-fractional-cfo-firms",
+      "source": "crustdata /company/search",
+      "query": {
+        "filters": [
+          {
+            "field": "industries",
+            "type": "in",
+            "value": [
+              "financial services",
+              "management consulting"
+            ]
+          }
+        ],
+        "limit": 25
+      },
+      "result_count": 0,
+      "note": "degraded retry"
+    },
+    {
+      "id": "ev-company-boutique-creative-agencies",
+      "source": "crustdata /company/search",
+      "query": {
+        "filters": [
+          {
+            "field": "industries",
+            "type": "in",
+            "value": [
+              "marketing and advertising",
+              "design"
+            ]
+          }
+        ],
+        "limit": 25
+      },
+      "result_count": 0,
+      "note": "degraded retry"
+    }
+  ],
+  "recovered_from_failure": true,
+  "cost_usd": 0.027159
+}

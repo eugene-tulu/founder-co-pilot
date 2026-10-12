@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from ..llm import LLM, maybe_llm
+from ..llm import LLM, maybe_llm, parse_json_loose
 from ..models import Idea, InterviewQuestions, Segment
 
 MOM_TEST_SYSTEM = """Write 10 Mom Test interview questions for the given customer segment.
@@ -32,10 +32,8 @@ async def build_scripts(idea: Idea, segments: list[Segment], llm: LLM) -> list[I
             '"' + q.format(pain=pain).replace('"', "'") + '"' for q in FALLBACK_QUESTIONS
         ) + "]}"
         raw = await maybe_llm(llm, MOM_TEST_SYSTEM, user, fallback_json, json_mode=True)
-        import json
-
         try:
-            questions = json.loads(raw)["questions"]
+            questions = parse_json_loose(raw)["questions"]
         except Exception:
             questions = [q.format(pain=pain) for q in FALLBACK_QUESTIONS]
         scripts.append(InterviewQuestions(segment=seg.name, questions=[str(q) for q in questions][:10]))

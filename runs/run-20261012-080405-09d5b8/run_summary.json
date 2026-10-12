@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20261012-080405-09d5b8",
+  "decision": "proceed",
+  "top_segment": "freelance-it-and-tech-consultancies",
+  "segments": 3,
+  "recovered_from_failure": false,
+  "cost_usd": 0.0,
+  "stage_ms": {
+    "ingest": 2390,
+    "plan": 16869,
+    "discover": 37834,
+    "analyze": 3598,
+    "scriptkit": 14724
+  }
+}

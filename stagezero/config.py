@@ -4,6 +4,27 @@ import os
 from dataclasses import dataclass
 
 
+def _load_dotenv(path: str = ".env") -> None:
+    """Minimal .env loader: KEY=VALUE lines, exported if not already set."""
+    if not os.path.exists(path):
+        return
+    try:
+        with open(path, encoding="utf-8") as fh:
+            for line in fh:
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                key, _, value = line.partition("=")
+                key, value = key.strip(), value.strip().strip('"').strip("'")
+                if key and key not in os.environ:
+                    os.environ[key] = value
+    except OSError:
+        pass
+
+
+_load_dotenv()
+
+
 @dataclass(frozen=True)
 class Settings:
     neatlogs_api_key: str | None

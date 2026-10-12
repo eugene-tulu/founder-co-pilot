@@ -1,0 +1,212 @@
+{
+  "run_id": "run-20261012-080547-26b793",
+  "idea": {
+    "idea_text": "AI agent that chases unpaid invoices for independent consultants",
+    "domain": "finance-ops",
+    "founder_stage": "stage0-improvise",
+    "has_free_users": false,
+    "has_first_sale": false
+  },
+  "stage_diagnosis": "Stage 0 (Improvise) on the ACQ $100M Scaling Roadmap: nothing is happening yet; the goal is to get people to try your stuff for free. Graduation = people find it helpful unprompted.",
+  "problem_statement": "The evidence provided is insufficient to support a falsifiable problem statement. The pain signals explicitly flag that there is no job-title signal for invoice-related pain in the solo management consultant segment, there are no competitor signals to confirm an active market, and the company count is zero, meaning no real segment members were identified or validated. Writing a problem statement from this data would require fabricating facts rather than drawing on segment evidence. The hypothesis cannot be responsibly formed until primary research confirms that solo management consultants actually experience delayed invoice payment as a meaningful friction point, quantifies how much time or revenue is lost to chasing payments, and identifies what workaround they currently rely on, whether that is manual follow-up emails, accountants, or tools like FreshBooks or QuickBooks. Collect that evidence first, then resubmit.",
+  "segments": [
+    {
+      "name": "solo-management-consultants",
+      "icp_filters": [
+        {
+          "field": "basic_info.industries",
+          "type": "in",
+          "value": [
+            "Business Consulting and Services"
+          ]
+        }
+      ],
+      "company_count": 0,
+      "sample_companies": [],
+      "pain_signals": [
+        "no job-title signal for 'invoice' in this segment"
+      ],
+      "competitor_count": 0,
+      "priority_score": 40,
+      "rationale": "Solo consultants lack a dedicated finance or AR team, so chasing overdue invoices means awkward client conversations that risk the relationship. Late payments directly threaten personal cash flow with no buffer, making automated follow-up extremely valuable.",
+      "degraded": true
+    },
+    {
+      "name": "boutique-it-and-tech-consultancies",
+      "icp_filters": [
+        {
+          "field": "basic_info.industries",
+          "type": "in",
+          "value": [
+            "Computer and Network Security",
+            "IT Services and IT Consulting",
+            "Technology, Information and Internet",
+            "Technology, Information and Media"
+          ]
+        }
+      ],
+      "company_count": 0,
+      "sample_companies": [],
+      "pain_signals": [
+        "no job-title signal for 'invoice' in this segment"
+      ],
+      "competitor_count": 0,
+      "priority_score": 40,
+      "rationale": "With multiple concurrent client engagements and invoices in flight, even a small team gets overwhelmed tracking payment statuses. Founders are focused on delivery, not collections, and a single late enterprise payment can create serious cash-flow gaps.",
+      "degraded": true
+    },
+    {
+      "name": "independent-financial-and-accounting-advisors",
+      "icp_filters": [
+        {
+          "field": "basic_info.industries",
+          "type": "in",
+          "value": [
+            "Accounting",
+            "Business Intelligence Platforms",
+            "Financial Services"
+          ]
+        }
+      ],
+      "company_count": 0,
+      "sample_companies": [],
+      "pain_signals": [
+        "no job-title signal for 'invoice' in this segment"
+      ],
+      "competitor_count": 0,
+      "priority_score": 40,
+      "rationale": "Financial consultants bill on hourly or project bases and often serve SMB clients who pay slowly. The irony of an accountant with overdue invoices is real — they know the problem intimately but still lack time and tools to automate persistent, professional follow-up without damaging client trust.",
+      "degraded": true
+    }
+  ],
+  "scripts": [
+    {
+      "segment": "solo-management-consultants",
+      "questions": [
+        "Walk me through the last time a client paid you late — what actually happened from the moment the invoice was due to when the money hit your account?",
+        "How many invoices did you send out in the last 90 days, and how many of those were paid after the due date?",
+        "What did you actually do the last time a client went more than two weeks past due — what steps did you take, in what order?",
+        "Tell me about the most uncomfortable follow-up conversation you had with a client over an unpaid invoice — how did you handle it?",
+        "How much time did you spend last month on any activity related to chasing, tracking, or following up on unpaid invoices?",
+        "Have you ever decided not to follow up on a late invoice, or to follow up less aggressively than you wanted to — what drove that decision?",
+        "What tools or systems did you use the last time you sent a payment reminder — walk me through exactly what you did?",
+        "Has a late-paying client ever affected your ability to cover your own expenses or take on new work — what happened?",
+        "Have you ever written off an invoice entirely rather than continue chasing it — what was the situation and how much was involved?",
+        "What did the last invoice follow-up message you sent actually say, and how long did it take you to write it?"
+      ]
+    },
+    {
+      "segment": "boutique-it-and-tech-consultancies",
+      "questions": [
+        "Walk me through the last time a client paid you late — what actually happened from the moment the invoice was due to when you finally got the money?",
+        "How many invoices did you have to follow up on more than once in the last three months, and roughly how much time did that take you?",
+        "What did you actually do the last time a client went silent after you sent an invoice — what steps did you take and in what order?",
+        "Tell me about the most uncomfortable collections situation you dealt with in the past year — how did you handle it and what was the outcome?",
+        "What tools or systems did you use the last time you chased a late payment — email, phone, accounting software, something else?",
+        "How did you decide when to escalate a late invoice to a more serious conversation or a third party — what triggered that decision last time?",
+        "Describe the last time a late payment actually affected your ability to cover business expenses or pay yourself — what did you do to bridge that gap?",
+        "When you last had multiple overdue invoices at once, how did you prioritize which ones to chase first and what did that process look like?",
+        "Have you ever written off an invoice as uncollectable — what happened leading up to that decision and how much was involved?",
+        "What did the follow-up communication you sent to a late-paying client last time actually say, and how long did it take you to write it?"
+      ]
+    },
+    {
+      "segment": "independent-financial-and-accounting-advisors",
+      "questions": [
+        "Walk me through the last time a client paid you late — what actually happened from the moment the invoice was due to when you finally got paid?",
+        "How many invoices did you have to follow up on more than once in the last three months, and how did you handle each follow-up?",
+        "What did you do the last time a client went completely silent after you sent an invoice?",
+        "How much time did you spend last month on any kind of payment-chasing activity — emails, calls, messages?",
+        "Tell me about the tools or systems you used the last time you sent a payment reminder — what did that process look like step by step?",
+        "Have you ever written off an invoice as uncollectable? What led to that decision and how much was it for?",
+        "Describe the last time chasing a late payment felt awkward or damaged your relationship with a client — what did you do?",
+        "What did you actually do the last time you had three or more invoices overdue at the same time?",
+        "Have you ever hired anyone — a bookkeeper, VA, or collections service — specifically to help you recover unpaid invoices? How did that go?",
+        "Think back to the last invoice that was more than 60 days overdue — walk me through every action you took and roughly how long each step took you."
+      ]
+    }
+  ],
+  "experiment_plan": [
+    "Recruit 10 founders from the top segment for free 20-minute interviews this week (warm channel first: past email contacts, LinkedIn 1st-degree).",
+    "Run the Mom Test script; capture past behaviour, never opinions.",
+    "Give the top 3 most-pained interviewees the workflow done-for-them by hand (concierge), free, once.",
+    "Log every interview against the kill criteria below."
+  ],
+  "graduation_gates": [
+    "At least 8 of 10 interviews confirm the pain is recurring and already costs measurable time/money",
+    "At least 5 interviewees accept a second, free concierge run unprompted",
+    "At least 3 interviewees describe the current, specific workaround in detail"
+  ],
+  "kill_criteria": [
+    "Fewer than 4 of 10 interviewees recognise the pain unprompted",
+    "Interviewees already solved it well enough that a paid tool feels unnecessary",
+    "The segment keeps describing it as a nice-to-have, not a recurring cost"
+  ],
+  "decision": "pivot",
+  "guardrail_notes": [
+    "guardrail PASS"
+  ],
+  "evidence": [
+    {
+      "id": "ev-company-solo-management-consultants",
+      "source": "crustdata /company/search",
+      "query": {
+        "filters": [
+          {
+            "field": "basic_info.industries",
+            "type": "in",
+            "value": [
+              "Business Consulting and Services"
+            ]
+          }
+        ],
+        "limit": 25
+      },
+      "result_count": 0,
+      "note": "degraded retry"
+    },
+    {
+      "id": "ev-company-boutique-it-and-tech-consultancies",
+      "source": "crustdata /company/search",
+      "query": {
+        "filters": [
+          {
+            "field": "basic_info.industries",
+            "type": "in",
+            "value": [
+              "Computer and Network Security",
+              "IT Services and IT Consulting",
+              "Technology, Information and Internet",
+              "Technology, Information and Media"
+            ]
+          }
+        ],
+        "limit": 25
+      },
+      "result_count": 0,
+      "note": "degraded retry"
+    },
+    {
+      "id": "ev-company-independent-financial-and-accounting-advisors",
+      "source": "crustdata /company/search",
+      "query": {
+        "filters": [
+          {
+            "field": "basic_info.industries",
+            "type": "in",
+            "value": [
+              "Accounting",
+              "Business Intelligence Platforms",
+              "Financial Services"
+            ]
+          }
+        ],
+        "limit": 25
+      },
+      "result_count": 0,
+      "note": "degraded retry"
+    }
+  ],
+  "recovered_from_failure": true,
+  "cost_usd": 0.031914
+}

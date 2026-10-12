@@ -88,11 +88,12 @@ async def discover_segments(
         # Pain signals: job postings that mention the pain term.
         try:
             jobs = await crustdata.job_search(
-                [{"field": "job.title", "type": "contains", "value": pain_term}], limit=25
+                [{"field": "job_title", "type": "(.)", "value": pain_term}], limit=25
             )
-            job_rows = jobs.get("results") or jobs.get("jobs") or []
+            job_rows = jobs.get("results") or jobs.get("jobs") or jobs.get("data") or []
             signals = [
-                f"job posting: {r.get('title', 'role')} at {r.get('company_name', r.get('company', 'a firm'))}"
+                f"job posting: {r.get('title', r.get('job_title', 'role'))} at "
+                f"{r.get('company_name', (r.get('company') or {}).get('name', 'a firm')) if isinstance(r.get('company'), dict) else r.get('company_name', 'a firm')}"
                 for r in job_rows[:3]
                 if isinstance(r, dict)
             ]
@@ -100,7 +101,7 @@ async def discover_segments(
                 Evidence(
                     id=f"ev-jobs-{hyp.name}",
                     source="crustdata /job/search",
-                    query={"filters": [{"field": "job.title", "type": "contains", "value": pain_term}]},
+                    query={"filters": [{"field": "job_title", "type": "(.)", "value": pain_term}]},
                     result_count=len(job_rows),
                     note="pain signals from hiring",
                 )
@@ -110,7 +111,7 @@ async def discover_segments(
         # Competitors: firms whose name betrays the same product.
         try:
             comp_data, _ = await crustdata.search_with_fallback(
-                [{"field": "basic_info.name", "type": "contains", "value": pain_term.split()[0]}], limit=25
+                [{"field": "basic_info.name", "type": "(.)", "value": pain_term.split()[0]}], limit=25
             )
             seg.competitor_count = _count(comp_data)
         except Exception:

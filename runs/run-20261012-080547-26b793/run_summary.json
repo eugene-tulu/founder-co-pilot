@@ -1,0 +1,15 @@
+{
+  "run_id": "run-20261012-080547-26b793",
+  "decision": "pivot",
+  "top_segment": "solo-management-consultants",
+  "segments": 3,
+  "recovered_from_failure": true,
+  "cost_usd": 0.031914,
+  "stage_ms": {
+    "ingest": 1996,
+    "plan": 15240,
+    "discover": 90378,
+    "analyze": 4313,
+    "scriptkit": 14782
+  }
+}
